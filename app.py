@@ -1,9 +1,13 @@
 import gradio as gr
 import sqlite3
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path='venv/.env')
 
 # Configure the Gemini API client
-genai.configure(api_key="GEMINI_API_KEY")  #Replace with your actual API key
+genai.configure(api_key=os.getenv('API_KEY'))  #Replace with your actual API key
 
 # Initialize the Gemini model
 model = genai.GenerativeModel("gemini-2.0-flash")

@@ -7,7 +7,7 @@ import os
 # Set your API key as an environment variable for security
 # In your terminal: export GEMINI_API_KEY="your_api_key_here"
 # On Windows: set GEMINI_API_KEY="your_api_key_here"
-API_KEY = os.environ.get("AIzaSyAgX3cos0qqhjbjpzEO9Xv946uUOOeiLPs")
+API_KEY = os.environ.get("")
 if not API_KEY:
     raise ValueError("GEMINI_API_KEY environment variable not set. Please set it before running the app.")
 
