@@ -146,7 +146,7 @@ with gr.Blocks() as demo:
 
     with gr.Row():
         with gr.Column(scale=3):
-            chat = gr.Chatbot()
+            chat = gr.Chatbot(type="messages")
             user_input = gr.Textbox(label="Your Message", placeholder="Type here and press Send")
             submit_button = gr.Button("Send")
         with gr.Column(scale=1):
@@ -187,5 +187,5 @@ with gr.Blocks() as demo:
         outputs=[history_box]
     )
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     demo.launch(share=True)
