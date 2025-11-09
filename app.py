@@ -4,7 +4,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import os
 
-load_dotenv(dotenv_path='venv/.env')
+load_dotenv() 
 
 # Configure the Gemini API client
 genai.configure(api_key=os.getenv('API_KEY'))  #Replace with your actual API key
@@ -159,11 +159,13 @@ with gr.Blocks() as demo:
     def respond(user_input, history, thread_id):
         history.append({"role": "user", "content": user_input})
         bot_response, updated_history = chatbot(user_input, history, thread_id)
-        chat_history = [(msg["content"], None) if msg["role"] == "user"
-                        else (None, msg["content"]) for msg in updated_history]
+    
+    # The chatbot component now expects a list of dicts with role/content
+        chat_history = updated_history
+    
         threads = load_threads()
         sidebar_md = format_chat_history(threads)
-        return chat_history, updated_history, sidebar_md, ""
+        return chat_history, updated_history, sidebar_md, ""        
 
     submit_button.click(
         respond,
